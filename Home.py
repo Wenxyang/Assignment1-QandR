@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import shutil
+from utilities.question_answer import question_answer
 
 st.title("File Upload Example (Overwrite Mode)")
 
@@ -18,13 +19,27 @@ if uploaded_file is not None:
 
     st.success(f"File successfully saved to {save_path}. (Old files removed)")
 
-from utilities.question_answer import question_answer
+# Sidebar: API key input
+with st.sidebar:
+    st.header("🔑 OpenAI API Key")
+    API_KEY = st.text_input("Enter your API Key", type="password")
+    if API_KEY:
+        os.environ["OPENAI_API_KEY"] = API_KEY
+        st.success("API Key set successfully ✅")
+    else:
+        # remove key if previously set
+        if "OPENAI_API_KEY" in os.environ:
+            del os.environ["OPENAI_API_KEY"]
+        st.warning("Please enter your API Key.")
 
 question = st.text_input("Enter your question:")
 if st.button("Ask"):
     if question.strip():
-        answer = question_answer(question)
-        st.write("**Answer:**")
-        st.write(answer)
+        if not os.environ.get("OPENAI_API_KEY"):
+            st.error("You must enter your OpenAI API Key in the sidebar first.")
+        else:
+            answer = question_answer(question)
+            st.write("**Answer:**")
+            st.write(answer)
     else:
         st.warning("Please type a question first.")
