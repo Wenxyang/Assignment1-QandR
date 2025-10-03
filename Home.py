@@ -3,7 +3,7 @@ import os
 import shutil
 from utilities.question_answer import question_answer
 
-st.title("File Upload Example (Overwrite Mode)")
+st.title("Queries and Responses")
 
 uploaded_file = st.file_uploader("Please upload a file", type=["pdf", "docx", "txt"])
 
@@ -17,7 +17,7 @@ if uploaded_file is not None:
     with open(save_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
 
-    st.success(f"File successfully saved to {save_path}. (Old files removed)")
+    st.success("Uploaded successfully ✅")
 
 # Sidebar: API key input
 with st.sidebar:
