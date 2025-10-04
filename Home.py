@@ -37,6 +37,7 @@ if st.button("Ask"):
     elif not question.strip():  
         st.warning("Please type your question.")
     else:
-        answer = question_answer(question.strip(), API_KEY.strip())
+        with st.spinner("Thinking…"):
+            answer = question_answer(question.strip(), API_KEY.strip())
         st.write("**Answer:**")
         st.write(answer)
