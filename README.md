@@ -7,4 +7,4 @@ Test case:
     4. Wait a moment while the AI processes your request, then review the answer.
 
 A sample document is included for testing purposes:
-- [Crimes Act 1958 (PDF)](test_files/Crimes Act 1958.pdf)
+- [Crimes Act 1958 (PDF)](test_files/Crimes_Act_1958.pdf)
