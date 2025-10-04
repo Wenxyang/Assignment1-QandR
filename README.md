@@ -8,3 +8,6 @@ Test case:
 
 A sample document is included for testing purposes:
 - [Crimes Act 1958 (PDF)](test_files/Crimes_Act_1958.pdf)
+
+Source: LlamaIndex 30 second quickstart
+        https://developers.llamaindex.ai/python/framework/#getting-started
